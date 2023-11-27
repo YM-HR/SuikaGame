@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://da4kjlwbt2ad"]
+
+[ext_resource type="PackedScene" uid="uid://x08h8hl8fadn" path="res://MarshScene/base.tscn" id="1_h1sol"]
+[ext_resource type="PackedScene" uid="uid://brlooj32s0b7p" path="res://MarshScene/mash_7.tscn" id="2_vmy85"]
+[ext_resource type="Texture2D" uid="uid://4woewqeuserg" path="res://art/mash6.png" id="2_xhcmh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvjnl"]
+radius = 72.7259
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2f5pi"]
+radius = 29.5442
+height = 143.149
+
+[node name="mash6" instance=ExtResource("1_h1sol")]
+NextMash = ExtResource("2_vmy85")
+GroupName = "Mash6s"
+score = 30
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xhcmh")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(10, -7)
+rotation = 0.356047
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_nvjnl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(-9, 28)
+rotation = 1.74533
+scale = Vector2(0.8, 0.9)
+shape = SubResource("CapsuleShape2D_2f5pi")

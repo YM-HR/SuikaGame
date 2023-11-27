@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds3qakuyxxxic"]
+
+[ext_resource type="PackedScene" uid="uid://x08h8hl8fadn" path="res://MarshScene/base.tscn" id="1_tlue1"]
+[ext_resource type="Texture2D" uid="uid://dxajy5aalhbq0" path="res://art/mash10.png" id="2_pvksn"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_o1ipw"]
+points = PackedVector2Array(-140, 130, -8, -180, 8, -180, 140, 130, 40, 130, 40, 200, -40, 200, -40, 130)
+
+[node name="mash10" instance=ExtResource("1_tlue1")]
+GroupName = "Mash10s"
+score = 500
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pvksn")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("ConvexPolygonShape2D_o1ipw")

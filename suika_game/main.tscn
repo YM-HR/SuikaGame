@@ -1,0 +1,182 @@
+[gd_scene load_steps=30 format=3 uid="uid://csu8yj5gxhp5s"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_02y7h"]
+[ext_resource type="Texture2D" uid="uid://blbds57igtxue" path="res://art/bg.png" id="1_xupf5"]
+[ext_resource type="PackedScene" uid="uid://ckxt77wrlu50r" path="res://MarshScene/mash_0.tscn" id="2_d034t"]
+[ext_resource type="PackedScene" uid="uid://vkjqs68xxiim" path="res://MarshScene/mash_1.tscn" id="3_jdlcg"]
+[ext_resource type="PackedScene" uid="uid://c4mqv47p2fu1o" path="res://Player.tscn" id="3_mepyn"]
+[ext_resource type="PackedScene" uid="uid://brdsnbt6g7gth" path="res://MarshScene/mash_2.tscn" id="4_7cp3g"]
+[ext_resource type="PackedScene" uid="uid://d2nbpdu0wfme7" path="res://MarshScene/mash_3.tscn" id="5_siwra"]
+[ext_resource type="PackedScene" uid="uid://huka6e82p6ly" path="res://MarshScene/mash_4.tscn" id="6_o6dqe"]
+[ext_resource type="PackedScene" uid="uid://drs4iwdu02ne2" path="res://MarshScene/mash_5.tscn" id="7_3bj7c"]
+[ext_resource type="FontFile" uid="uid://dc2ghrqrrwd5x" path="res://font/07にくまるフォント.otf" id="8_5v80x"]
+[ext_resource type="PackedScene" uid="uid://da4kjlwbt2ad" path="res://MarshScene/mash_6.tscn" id="8_mnsvj"]
+[ext_resource type="Texture2D" uid="uid://vho08uoldtsg" path="res://art/gameover.png" id="9_28uve"]
+[ext_resource type="PackedScene" uid="uid://brlooj32s0b7p" path="res://MarshScene/mash_7.tscn" id="9_tkud8"]
+[ext_resource type="PackedScene" uid="uid://2mg3f3ddwyc1" path="res://MarshScene/mash_8.tscn" id="10_0hqr7"]
+[ext_resource type="PackedScene" uid="uid://c1lruhipnjcrb" path="res://MarshScene/mash_9.tscn" id="11_kjyev"]
+[ext_resource type="PackedScene" uid="uid://ds3qakuyxxxic" path="res://MarshScene/mash_10.tscn" id="12_p7sps"]
+[ext_resource type="PackedScene" uid="uid://cj2mnrlogm0se" path="res://particle/star.tscn" id="17_obbno"]
+[ext_resource type="Texture2D" uid="uid://debou5lveorgw" path="res://art/ReTry.png" id="18_38qx5"]
+[ext_resource type="Script" path="res://ReTry.gd" id="19_vp0q3"]
+[ext_resource type="AudioStream" uid="uid://dhj6y2uorp4by" path="res://game_over.mp3" id="20_0h12a"]
+[ext_resource type="AudioStream" uid="uid://cevlv5y2q1hkt" path="res://main_bgm.mp3" id="21_62r01"]
+[ext_resource type="AudioStream" uid="uid://pldllq2rn7l0" path="res://sound_effect1.mp3" id="22_cu44v"]
+[ext_resource type="AudioStream" uid="uid://joan5ytaw6oq" path="res://sound_effect2.mp3" id="23_70gmj"]
+[ext_resource type="Texture2D" uid="uid://cphqnlw36racj" path="res://art/limit.PNG" id="24_eu7ph"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xsem4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlcoa"]
+size = Vector2(520, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8y12u"]
+size = Vector2(56, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1w4y"]
+size = Vector2(536, 88)
+
+[sub_resource type="GDScript" id="GDScript_860kx"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Main" type="Node"]
+script = ExtResource("1_02y7h")
+mash_score = Array[PackedScene]([ExtResource("2_d034t"), ExtResource("3_jdlcg"), ExtResource("4_7cp3g"), ExtResource("5_siwra"), ExtResource("6_o6dqe"), ExtResource("7_3bj7c"), ExtResource("8_mnsvj"), ExtResource("9_tkud8"), ExtResource("10_0hqr7"), ExtResource("11_kjyev"), ExtResource("12_p7sps")])
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xupf5")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_mepyn")]
+position = Vector2(360, 450)
+
+[node name="wall_bottom" type="RigidBody2D" parent="." groups=["Walls"]]
+physics_material_override = SubResource("PhysicsMaterial_xsem4")
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_bottom"]
+position = Vector2(364, 1084)
+shape = SubResource("RectangleShape2D_mlcoa")
+
+[node name="wall_left" type="RigidBody2D" parent="." groups=["Walls"]]
+physics_material_override = SubResource("PhysicsMaterial_xsem4")
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_left"]
+position = Vector2(84, 808)
+shape = SubResource("RectangleShape2D_8y12u")
+
+[node name="wall_right" type="RigidBody2D" parent="." groups=["Walls"]]
+physics_material_override = SubResource("PhysicsMaterial_xsem4")
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall_right"]
+position = Vector2(636, 808)
+shape = SubResource("RectangleShape2D_8y12u")
+
+[node name="Limit" type="RigidBody2D" parent="."]
+position = Vector2(0, 9)
+physics_material_override = SubResource("PhysicsMaterial_xsem4")
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Limit"]
+position = Vector2(364, 476)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_b1w4y")
+one_way_collision = true
+
+[node name="SelectMash" type="Sprite2D" parent="."]
+
+[node name="NextMash" type="Sprite2D" parent="."]
+position = Vector2(105, 280)
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 200.0
+offset_right = -30.0
+offset_bottom = 268.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.054902, 0, 0.435294, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("8_5v80x")
+theme_override_font_sizes/font_size = 50
+text = "00000"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VestScore" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 264.0
+offset_right = 280.0
+offset_bottom = 344.0
+grow_horizontal = 0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.054902, 0, 0.435294, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("8_5v80x")
+theme_override_font_sizes/font_size = 50
+text = "ベストスコア: 00000"
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+script = SubResource("GDScript_860kx")
+
+[node name="GameOver" type="Sprite2D" parent="."]
+visible = false
+z_index = 999
+position = Vector2(360, 640)
+texture = ExtResource("9_28uve")
+
+[node name="Particles_star" parent="." instance=ExtResource("17_obbno")]
+
+[node name="ReTry" type="Sprite2D" parent="."]
+visible = false
+z_index = 999
+position = Vector2(360, 640.5)
+scale = Vector2(1, 0.986719)
+texture = ExtResource("18_38qx5")
+script = ExtResource("19_vp0q3")
+
+[node name="GameOverBgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_0h12a")
+
+[node name="MainBgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_62r01")
+
+[node name="SoundEffect1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_cu44v")
+
+[node name="SoundEffect2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_70gmj")
+
+[node name="limit_img" type="Sprite2D" parent="."]
+position = Vector2(360, 670)
+scale = Vector2(1.344, 1)
+texture = ExtResource("24_eu7ph")

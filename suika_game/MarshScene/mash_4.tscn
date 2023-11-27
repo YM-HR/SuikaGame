@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://huka6e82p6ly"]
+
+[ext_resource type="PackedScene" uid="uid://x08h8hl8fadn" path="res://MarshScene/base.tscn" id="1_vcdxt"]
+[ext_resource type="PackedScene" uid="uid://drs4iwdu02ne2" path="res://MarshScene/mash_5.tscn" id="2_6tn75"]
+[ext_resource type="Texture2D" uid="uid://b65qoc4uxfla2" path="res://art/mash4.png" id="2_qg3va"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cf5wy"]
+radius = 5.33333
+height = 68.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b3wkg"]
+
+[node name="mash4" instance=ExtResource("1_vcdxt")]
+NextMash = ExtResource("2_6tn75")
+GroupName = "Mash4s"
+score = 15
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_qg3va")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_cf5wy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 24)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_b3wkg")
